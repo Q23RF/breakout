@@ -94,7 +94,7 @@ function Brick:hit()
 
 
     if self.locked then
-        -- self.powerup = Powerup(self.x + self.width/2 - 8, self.y + 16, 10)
+        self.powerup = Powerup(self.x + self.width/2 - 8, self.y + 16, 10)
 
     else
 
