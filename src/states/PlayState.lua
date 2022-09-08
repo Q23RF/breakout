@@ -28,7 +28,6 @@ function PlayState:enter(params)
     self.highScores = params.highScores
     self.ball = params.ball
     self.level = params.level
-    self.powerups = {}
 
     self.recoverPoints = 1000
 
