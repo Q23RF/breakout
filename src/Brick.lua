@@ -64,7 +64,6 @@ function Brick:init(x, y)
     self.width = 32
     self.height = 16
 
-    self.powerup = 0
     
     -- used to determine whether this brick should be rendered
     self.inPlay = true
@@ -93,10 +92,7 @@ end
 function Brick:hit()
 
 
-    if self.locked then
-        -- self.powerup = Powerup(self.x + self.width/2 - 8, self.y + 16, 10)
-
-    else
+    if not self.locked then
 
         -- set the particle system to interpolate between two colors; in this case, we give
         -- it our self.color but with varying alpha; brighter for higher tiers, fading to 0
@@ -161,10 +157,6 @@ function Brick:render()
                 -- to draw the correct tier and color brick onto the screen
                 gFrames['bricks'][1 + ((self.color - 1) * 4) + self.tier],
                 self.x, self.y)
-        end
-
-        if self.powerup ~= 0 then
-            self.powerup:render()
         end
     end
 end
