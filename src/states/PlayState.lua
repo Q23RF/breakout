@@ -89,6 +89,8 @@ function PlayState:update(dt)
             
             -- trigger the brick's hit function, which removes it from play
             brick:hit()
+            table.insert(self.powerups, Powerup(self.x + self.width/2 - 8, self.y + 16, 10))
+
 
 
             -- if we have enough points, recover a point of health
