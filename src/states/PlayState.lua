@@ -216,9 +216,6 @@ function PlayState:render()
         brick:renderParticles()
     end
 
-    for k, powerup in pairs(self.powerups) do
-        powerup:render()
-    end
 
     self.paddle:render()
     self.ball:render()
