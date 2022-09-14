@@ -28,7 +28,6 @@ function PlayState:enter(params)
     self.highScores = params.highScores
     self.ball = params.ball
     self.level = params.level
-    self.powerups = {}
 
     self.recoverPoints = 1000
 
@@ -219,9 +218,6 @@ function PlayState:render()
         brick:renderParticles()
     end
 
-    for k, powerup in pairs(self.powerups) do
-        powerup:render()
-    end
 
     self.paddle:render()
     self.ball:render()
