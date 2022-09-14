@@ -1,12 +1,9 @@
 --[[
     GD50
     Breakout Remake
-
     -- PlayState Class --
-
     Author: Colton Ogden
     cogden@cs50.harvard.edu
-
     Represents the state of the game in which we are actively playing;
     player should control the paddle, with the ball actively bouncing between
     the bricks, walls, and the paddle. If the ball goes below the paddle, then
@@ -28,6 +25,7 @@ function PlayState:enter(params)
     self.highScores = params.highScores
     self.ball = params.ball
     self.level = params.level
+    self.powerups = {}
 
     self.recoverPoints = 1000
 
@@ -202,6 +200,11 @@ function PlayState:update(dt)
         brick:update(dt)
     end
 
+    -- for moving powerups down
+    for k, powerup in pairs(self.powerups) do
+        powerup:update(dt)
+    end
+
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
     end
@@ -217,6 +220,11 @@ function PlayState:render()
     for k, brick in pairs(self.bricks) do
         brick:renderParticles()
     end
+
+    -- render powerups
+    for k, powerup in pairs(self.powerups) do
+        powerup:render()
+    end    
 
 
     self.paddle:render()

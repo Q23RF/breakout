@@ -3,7 +3,7 @@ Powerup = Class{}
 function Powerup:init(x, y, skin)
 	self.x = x
 	self.y = y
-	self.dy = 1
+	self.dy = 15
 	self.skin = skin
 end
 
