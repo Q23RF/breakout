@@ -26,6 +26,7 @@ function PlayState:enter(params)
     self.ball = params.ball
     self.level = params.level
     self.powerups = {}
+    self.keys = 1
 
     self.recoverPoints = 1000
 
@@ -86,7 +87,10 @@ function PlayState:update(dt)
             
             -- trigger the brick's hit function, which removes it from play
             brick:hit()
-            table.insert(self.powerups, Powerup(brick.x + brick.width/2 - 8, brick.y + 16, 10))
+            table.insert(self.powerups, Powerup(
+                brick.x + brick.width/2 - 8, 
+                brick.y + 16, 
+                math.random(9)))
 
 
 
@@ -226,6 +230,8 @@ function PlayState:render()
         powerup:render()
     end    
 
+    love.graphics.setFont(gFonts['small'])
+    love.graphics.print('keys: ' .. tostring(self.keys), VIRTUAL_WIDTH - 40, VIRTUAL_HEIGHT - 15)
 
     self.paddle:render()
     self.ball:render()
