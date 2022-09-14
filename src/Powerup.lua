@@ -1,4 +1,4 @@
-Powerup = class{}
+Powerup = Class{}
 
 function Powerup:init(x, y, skin)
 	self.x = x
