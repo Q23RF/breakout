@@ -158,10 +158,6 @@ function Brick:render()
                 gFrames['bricks'][1 + ((self.color - 1) * 4) + self.tier],
                 self.x, self.y)
         end
-
-        if self.powerup ~= 0 then
-            self.powerup:render()
-        end
     end
 end
 
