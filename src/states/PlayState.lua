@@ -89,7 +89,7 @@ function PlayState:update(dt)
             
             -- trigger the brick's hit function, which removes it from play
             brick:hit()
-            table.insert(self.powerups, Powerup(self.x + self.width/2 - 8, self.y + 16, 10))
+            table.insert(self.powerups, Powerup(brick.x + brick.width/2 - 8, brick.y + 16, 10))
 
 
 
