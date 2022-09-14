@@ -90,45 +90,40 @@ end
     changing its color otherwise.
 ]]
 function Brick:hit()
-
-
-    if not self.locked then
-
         -- set the particle system to interpolate between two colors; in this case, we give
         -- it our self.color but with varying alpha; brighter for higher tiers, fading to 0
         -- over the particle's lifetime (the second color)
-        self.psystem:setColors(
-            paletteColors[self.color].r / 255,
-            paletteColors[self.color].g / 255,
-            paletteColors[self.color].b / 255,
-            55 * (self.tier + 1) / 255,
-            paletteColors[self.color].r / 255,
-            paletteColors[self.color].g / 255,
-            paletteColors[self.color].b / 255,
-            0
-        )
-        self.psystem:emit(64)
+    self.psystem:setColors(
+        paletteColors[self.color].r / 255,
+        paletteColors[self.color].g / 255,
+        paletteColors[self.color].b / 255,
+        55 * (self.tier + 1) / 255,
+        paletteColors[self.color].r / 255,
+        paletteColors[self.color].g / 255,
+        paletteColors[self.color].b / 255,
+        0
+    )
+    self.psystem:emit(64)
 
-        -- sound on hit
-        gSounds['brick-hit-2']:stop()
-        gSounds['brick-hit-2']:play()
+    -- sound on hit
+    gSounds['brick-hit-2']:stop()
+    gSounds['brick-hit-2']:play()
 
-        -- if we're at a higher tier than the base, we need to go down a tier
-        -- if we're already at the lowest color, else just go down a color
-        if self.tier > 0 then
-            if self.color == 1 then
-                self.tier = self.tier - 1
-                self.color = 5
-            else
-                self.color = self.color - 1
-            end
+    -- if we're at a higher tier than the base, we need to go down a tier
+    -- if we're already at the lowest color, else just go down a color
+    if self.tier > 0 then
+        if self.color == 1 then
+            self.tier = self.tier - 1
+            self.color = 5
         else
-            -- if we're in the first tier and the base color, remove brick from play
-            if self.color == 1 then
-                self.inPlay = false
-            else
-                self.color = self.color - 1
-            end
+            self.color = self.color - 1
+        end
+    else
+        -- if we're in the first tier and the base color, remove brick from play
+        if self.color == 1 then
+            self.inPlay = false
+        else
+            self.color = self.color - 1
         end
     end
 

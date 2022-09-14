@@ -307,3 +307,8 @@ function renderScore(score)
     love.graphics.print('Score:', VIRTUAL_WIDTH - 60, 5)
     love.graphics.printf(tostring(score), VIRTUAL_WIDTH - 50, 5, 40, 'right')
 end
+
+function renderKeys(keys)
+    love.graphics.setFont(gFonts['small'])
+    love.graphics.print('keys: ' .. tostring(keys), VIRTUAL_WIDTH - 40, VIRTUAL_HEIGHT - 15)
+end
